@@ -8,7 +8,6 @@ import javafx.scene.layout.GridPane;
 import org.whstsa.library.api.Callback;
 import org.whstsa.library.api.ObservableReference;
 import org.whstsa.library.api.library.ILibrary;
-import org.whstsa.library.db.ObjectDelegate;
 import org.whstsa.library.gui.components.*;
 import org.whstsa.library.gui.factories.DialogBuilder;
 import org.whstsa.library.gui.factories.DialogUtils;

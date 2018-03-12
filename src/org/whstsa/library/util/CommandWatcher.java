@@ -16,6 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * Reads inputs from the command-line
  * Created by eric on 11/19/17.
  */
 public class CommandWatcher implements InputListener {

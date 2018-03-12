@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * BackgroundWorker is a class used for registering background operations
+ * that run parallel with the main thread.
+ * These operations run once every 50ms
+ * Use <code>BackgroundWorker.registerOperation(() -> {*Operation here*})</code>
+ */
 public class BackgroundWorker extends Thread {
 
     private static final BackgroundWorker singleton;
@@ -47,6 +53,10 @@ public class BackgroundWorker extends Thread {
         return Collections.unmodifiableList(this.tickedOperationList);
     }
 
+    /**
+     * Used to register operations to be run in the background
+     * @param operation
+     */
     public void registerOperation(Runnable operation) {
         this.tickedOperationList.add(operation);
     }

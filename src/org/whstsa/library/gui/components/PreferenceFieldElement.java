@@ -3,10 +3,10 @@ package org.whstsa.library.gui.components;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
-import org.whstsa.library.LibraryDB;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.Config;
-import org.whstsa.library.gui.factories.GuiUtils;
 import org.whstsa.library.util.FieldProperty;
+import org.whstsa.library.gui.factories.GuiUtils;
 
 public class PreferenceFieldElement extends HBox implements Element {
 
@@ -28,7 +28,7 @@ public class PreferenceFieldElement extends HBox implements Element {
         this.property = property;
         this.key = key;
         this.config = config;
-        LibraryDB.LOGGER.debug();
+        AppMain.LOGGER.debug();
         switch (this.property) {
             case STRING:
                 this.labelElement = GuiUtils.createLabel(label);
