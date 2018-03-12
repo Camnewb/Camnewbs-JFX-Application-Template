@@ -4,37 +4,31 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import org.whstsa.library.LibraryDB;
-import org.whstsa.library.api.IPerson;
-import org.whstsa.library.api.library.ILibrary;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.components.LabelElement;
 import org.whstsa.library.gui.components.Table;
-import org.whstsa.library.gui.components.tables.DatabaseManagementTables;
 import org.whstsa.library.gui.factories.GuiUtils;
 
 public class GuiMain implements Gui {
 
-    private LibraryDB libraryDB;
+    private AppMain appMain;
 
-    public GuiMain(LibraryDB libraryDB) {
-        this.libraryDB = libraryDB;
+    public GuiMain(AppMain appMain) {
+        this.appMain = appMain;
     }
 
     @Override
     public Scene draw() {
 
-        Table<ILibrary> libraryTable = new Table<>();
-        Table<IPerson> personTable = new Table<>();
+        MainMenuBar menuBar = new MainMenuBar(appMain);
 
-        MainMenuBar menuBar = new MainMenuBar(null, null, null, libraryTable, personTable, libraryDB, null);
+        StackPane libraryContainer = GuiUtils.createSplitPane(GuiUtils.Orientation.HORIZONTAL, new Table<String>().getTable());
 
-        StackPane libraryContainer = DatabaseManagementTables.libraryOverviewTable(this.libraryDB, libraryTable);
-
-        StackPane personContainer = DatabaseManagementTables.personOverviewTable(libraryDB, personTable);
+        StackPane personContainer = GuiUtils.createSplitPane(GuiUtils.Orientation.HORIZONTAL, new Table<String>().getTable());
 
         StackPane tableContainer = GuiUtils.createSplitPane(GuiUtils.Orientation.HORIZONTAL, libraryContainer, personContainer);
 
-        LabelElement title = GuiUtils.createTitle("Library Manager");
+        LabelElement title = GuiUtils.createTitle("Application");
 
         VBox container = new VBox(menuBar.getMenu(), title, tableContainer);
         container.setSpacing(10);

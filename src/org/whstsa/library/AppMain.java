@@ -5,12 +5,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.whstsa.library.api.BackgroundWorker;
-import org.whstsa.library.db.IOFileDelegate;
 import org.whstsa.library.gui.Config;
 import org.whstsa.library.gui.InterfaceManager;
 import org.whstsa.library.gui.api.GuiMain;
 import org.whstsa.library.gui.factories.DialogUtils;
-import org.whstsa.library.gui.scenes.IOFileSelection;
 import org.whstsa.library.util.CommandWatcher;
 import org.whstsa.library.util.Logger;
 import org.whstsa.library.util.Readline;
@@ -26,17 +24,11 @@ public class AppMain extends Application {
     public static final Readline READER = new Readline(System.in, System.out);
     public static final boolean TESTING = false;
     public static final Logger LOGGER = new Logger();
-    private static IOFileDelegate FILE_DELEGATE;
     private Stage stage;
     private InterfaceManager interfaceManager;
-    private IOFileSelection jsonFileBrowser;
     private File jsonRawFile;
     private Config config;
     private String jsonPath;
-
-    public static IOFileDelegate getFileDelegate() {
-        return FILE_DELEGATE;
-    }
 
     public void start(Stage stage) {
         final String javaCWD = new File(".").getPath().replace("file:/", "");

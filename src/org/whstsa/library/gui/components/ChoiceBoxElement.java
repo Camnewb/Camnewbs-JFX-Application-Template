@@ -1,17 +1,19 @@
 package org.whstsa.library.gui.components;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import org.whstsa.library.gui.factories.GuiUtils;
-import org.whstsa.library.gui.factories.LibraryManagerUtils;
 import org.whstsa.library.util.ChoiceBoxProperty;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class ChoiceBoxElement<T, U> extends ChoiceBox implements RequiredElement {
 
@@ -44,7 +46,7 @@ public class ChoiceBoxElement<T, U> extends ChoiceBox implements RequiredElement
         if (property != null) {
             setList.forEach(property::property);//Using ChoiceBoxProperty<> like ClickHandler or Callback
         }
-        this.setItems(LibraryManagerUtils.toObservableList((List<String>) setList));//Ok so, like, make sure its a string...
+        this.setItems(FXCollections.observableArrayList(setList));
         if (selected != -1) {
             super.getSelectionModel().select(selected);
         }

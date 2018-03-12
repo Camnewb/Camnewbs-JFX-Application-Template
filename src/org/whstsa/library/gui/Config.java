@@ -2,7 +2,7 @@ package org.whstsa.library.gui;
 
 import javafx.scene.control.Alert;
 import org.apache.commons.lang3.SystemUtils;
-import org.whstsa.library.LibraryDB;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.factories.DialogUtils;
 
 import java.io.File;
@@ -24,14 +24,19 @@ public class Config {
         try {
             properties.load(new FileReader(this.configFile));
         } catch (IOException ex) {
-            this.setProperty("initialDirectory", "null");
-            this.setProperty("tooltips", "true");
-            this.setProperty("autosave", "true");
-            this.setProperty("autosaveInterval", "10");
-            LibraryDB.LOGGER.debug("Couldn't load config.");
+            initializeProperties();
+            AppMain.LOGGER.debug("Couldn't load config.");
             ex.printStackTrace();
         }
 
+    }
+
+    /**
+     * This method will write initial properties to the config file
+     * If the config fails to load, this method will be called
+     */
+    public void initializeProperties() {
+        this.setProperty("anything", "Whatever you want");
     }
 
     public String getProperty(String key) {
@@ -40,7 +45,7 @@ public class Config {
 
     public void setProperty(String key, String property) {
         this.properties.setProperty(key, property);
-        LibraryDB.LOGGER.debug("Property " + property + " was applied to " + key);
+        AppMain.LOGGER.debug("Property " + property + " was applied to " + key);
     }
 
     public void save() {
@@ -60,11 +65,11 @@ public class Config {
 
     public static String determineOptimalFileLocation() {
         if (SystemUtils.IS_OS_WINDOWS) {
-            return System.getProperty("user.home") + "/AppData/Local/LibraryDB/config.properties";
+            return System.getProperty("user.home") + "/AppData/Local/AppMain/config.properties";
         } else if (SystemUtils.IS_OS_MAC) {
-            return System.getProperty("user.home") + "/Library/Application\\ Support/LibraryDB/config.properties";
+            return System.getProperty("user.home") + "/Library/Application\\ Support/AppMain/config.properties";
         } else {
-            return System.getProperty("user.home") + "/.librarydb/config.properties";
+            return System.getProperty("user.home") + "/AppMain/config.properties";
         }
     }
 

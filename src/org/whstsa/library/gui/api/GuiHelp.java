@@ -6,24 +6,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import org.whstsa.library.LibraryDB;
-import org.whstsa.library.api.ObservableReference;
-import org.whstsa.library.api.library.ILibrary;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.factories.GuiUtils;
 import org.whstsa.library.gui.text.HelpText;
 
 public class GuiHelp implements Gui {
 
-    private LibraryDB libraryDB;
+    private AppMain appMain;
     private BorderPane window;
     private HelpText helpText;
 
-    public GuiHelp(LibraryDB libraryDB, ObservableReference<ILibrary> library) {
-        this.libraryDB = libraryDB;
+    public GuiHelp(AppMain appMain) {
+        this.appMain = appMain;
 
         Button backButton = GuiUtils.createButton("Back to Main Menu", true,
-                library == null ? event -> libraryDB.getInterfaceManager().display(new GuiMain(libraryDB)) :
-                        event -> libraryDB.getInterfaceManager().display(new GuiLibraryManager(library.poll(), this.libraryDB)));
+                event -> GuiUtils.goBack(appMain));
         VBox buttonBar = GuiUtils.createVBox(backButton);
         buttonBar.setAlignment(Pos.CENTER);
 

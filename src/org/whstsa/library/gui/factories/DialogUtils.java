@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import org.whstsa.library.LibraryDB;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.api.Callback;
 import org.whstsa.library.gui.components.Element;
 import org.whstsa.library.util.Logger;
@@ -129,7 +129,7 @@ public class DialogUtils {
     }
 
     public static void closeDialog(Alert dialog) {
-        LibraryDB.LOGGER.debug("Closing dialog");
+        AppMain.LOGGER.debug("Closing dialog");
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
         dialog.close();
     }

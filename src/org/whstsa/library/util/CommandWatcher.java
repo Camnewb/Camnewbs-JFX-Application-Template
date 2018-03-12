@@ -7,8 +7,6 @@ import org.whstsa.library.commands.api.ICommand;
 import org.whstsa.library.commands.api.ICommandSender;
 import org.whstsa.library.commands.api.impl.ConsoleSender;
 import org.whstsa.library.commands.functional.*;
-import org.whstsa.library.commands.getters.*;
-import org.whstsa.library.commands.setters.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -82,34 +80,8 @@ public class CommandWatcher implements InputListener {
     private void loadCommands() {
         List<ICommand> commands = new ArrayList<>();
 
-        commands.add(new GetLibraryCommand());
-        commands.add(new NewLibraryCommand());
-        commands.add(new ListLibrariesCommand());
-        commands.add(new AddToLibraryCommand());
-        commands.add(new AddBookToLibraryCommand());
-
-        commands.add(new CheckoutBookCommand());
-        commands.add(new ReturnBookCommand());
-
-        commands.add(new GetPersonCommand());
-        commands.add(new NewPersonCommand());
-        commands.add(new ListPeopleCommand());
-
-        commands.add(new GetBookCommand());
-        commands.add(new ListBooksCommand());
-        commands.add(new NewBookCommand());
-
-        commands.add(new GetCommand());
-
-        commands.add(new SetDaysCommand());
-
-        commands.add(new SaveCommand());
 
         commands.add(new HelpCommand(this));
-
-        commands.add(new DayGeneratorCommand());
-        commands.add(new PopulatePeopleCommand());
-        commands.add(new PopulateBooksCommand());
 
 
         commands.forEach(command -> this.commandMap.put(command.getName(), command));

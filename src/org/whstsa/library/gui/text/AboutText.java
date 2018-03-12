@@ -9,13 +9,9 @@ public class AboutText {
 
     public AboutText() {
         aboutTextContent = new Text("" +
-                "Library Manager is an application designed for the administration of a library's members and books, " +
-                "and handling of most of the member-to-staff actions. This application can display details of a books " +
-                "title, author, copies, status, due date, and borrower, and display a member's name, rank, fines, and checked out books. " +
-                "If you are having trouble with the application, you can find assistance in the Help > Help... menu. \n" +
-                "\n" +
-                "This application was designed and programmed by the Wharton High School Technology Student Association Software " +
-                "Development Team (WHSTSASDT) of Eric Rabil, Cameron Newborn, and Andre Roberts. It is programmed in Java. \n" +
+                "This application was originally designed and programmed by the Wharton High School Technology Student " +
+                "Association Software Development Team (WHSTSASDT) of Eric Rabil, Cameron Newborn, and Andre Roberts. " +
+                "It was forked by myself to derive a JavaFX application template. \n" +
                 "This software is available under the M.I.T. license. ");
     }
 

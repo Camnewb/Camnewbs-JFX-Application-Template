@@ -11,11 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import org.whstsa.library.LibraryDB;
-import org.whstsa.library.api.ObservableReference;
-import org.whstsa.library.api.books.IBook;
-import org.whstsa.library.api.library.ILibrary;
-import org.whstsa.library.api.library.IMember;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.components.*;
 import org.whstsa.library.util.ChoiceBoxProperty;
 import org.whstsa.library.util.ClickHandler;
@@ -26,14 +22,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class which contains the methods to easily create most common JavaFX elements
+ */
 public class GuiUtils {
 
     private static final int COMPONENT_PADDING = 16;
     private static final Font TITLE_FONT = new Font(30.0);
     private static final Font LABEL_FONT = new Font(16.0);
 
+    public static void goBack(AppMain appMain) {
+        appMain.getInterfaceManager().display(appMain.getInterfaceManager().getOldGUI());
+    }
+
     public static StackPane createSplitPane(Orientation orientation, Node... nodes) {
-        LibraryDB.LOGGER.debug("Assembling " + orientation.name + " StackPane with " + nodes.length + " nodes.");
+        AppMain.LOGGER.debug("Assembling " + orientation.name + " StackPane with " + nodes.length + " nodes.");
         Pane container;
         switch (orientation) {
             case VERTICAL:
@@ -45,7 +48,7 @@ public class GuiUtils {
                 ((HBox) container).setAlignment(Pos.CENTER);
                 break;
             default:
-                LibraryDB.LOGGER.warn("Unknown orientation " + orientation.name + " - defaulting to horizontal.");
+                AppMain.LOGGER.warn("Unknown orientation " + orientation.name + " - defaulting to horizontal.");
                 container = new HBox(COMPONENT_PADDING, nodes);
                 ((HBox) container).setAlignment(Pos.CENTER);
                 break;
@@ -130,14 +133,6 @@ public class GuiUtils {
         return new TextFlowElement(id, size, css, Arrays.asList(fields));
     }
 
-    public static void createBookSearchBar(String id, String label, ObservableList<String> items, BorderPane container, ObservableReference<ILibrary> libraryReference, Table<IBook> table) {
-        ((VBox) container.getTop()).getChildren().set(2, new SearchBarElement<>(id, label, items, container, table));
-    }
-
-    public static void createMemberSearchBar(String id, String label, ObservableList<String> items, BorderPane container, ObservableReference<ILibrary> libraryReference, Table<IMember> table) {
-        ((VBox) container.getTop()).getChildren().set(2, new SearchBarElement<>(id, label, items, container, table));
-    }
-
     public static Separator createSeparator() {
         return new Separator();
     }
@@ -157,7 +152,7 @@ public class GuiUtils {
     }
 
     public static Button createButton(String title, boolean nativeWidth, double width, Pos pos, ClickHandler clickHandler) {
-        LibraryDB.LOGGER.debug("Assembling button with title " + title + " (CLICK HANDLER: " + Logger.assertion(clickHandler != null) + ")");
+        AppMain.LOGGER.debug("Assembling button with title " + title + " (CLICK HANDLER: " + Logger.assertion(clickHandler != null) + ")");
         Button button = new Button(title);
         if (title.length() < 10 && width == 80.0) {//If title is more than 10 characters or nativeWidth == true, default to the automatic button width. Otherwise, set width to 80
             button.setPrefWidth(80.0);
@@ -263,7 +258,7 @@ public class GuiUtils {
     }
 
     public static LabelElement createLabel(String text, Font font, Color color) {
-        LibraryDB.LOGGER.debug("Assembling label with text " + text);
+        AppMain.LOGGER.debug("Assembling label with text " + text);
         LabelElement label = new LabelElement(text, text);
         label.setFont(font);
         label.setTextFill(color);
@@ -283,14 +278,14 @@ public class GuiUtils {
     }
 
     public static LabelElement createTitle(String title) {
-        LibraryDB.LOGGER.debug("Assembling title label with text " + title);
+        AppMain.LOGGER.debug("Assembling title label with text " + title);
         LabelElement label = createLabel(title);
         label.setFont(TITLE_FONT);
         return label;
     }
 
     public static void defaultCloseOperation(ActionEvent event) {
-        LibraryDB.LOGGER.debug("Window closed");
+        AppMain.LOGGER.debug("Window closed");
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 

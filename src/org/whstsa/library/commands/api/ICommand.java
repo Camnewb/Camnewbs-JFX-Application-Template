@@ -5,7 +5,9 @@ import org.json.JSONObject;
 import java.util.List;
 
 /**
- * Created by eric on 11/19/17.
+ * Interface for commands, for use in the command-line
+ * @see org.whstsa.library.commands.functional.HelpCommand
+ * @author Eric
  */
 public interface ICommand {
 

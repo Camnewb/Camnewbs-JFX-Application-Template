@@ -2,7 +2,7 @@ package org.whstsa.library.gui;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.whstsa.library.LibraryDB;
+import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.api.Gui;
 import org.whstsa.library.util.Logger;
 
@@ -11,19 +11,19 @@ import java.util.Map;
 
 public class InterfaceManager {
 
-    private static final Logger LOGGER = new Logger(LibraryDB.LOGGER, "GUIMGR");
-    private LibraryDB libraryDB;
+    private static final Logger LOGGER = new Logger(AppMain.LOGGER, "GUIMGR");
+    private AppMain appMain;
     private Scene oldScene;
     private Gui oldGui;
     private Gui currentGui;
     private Map<String, Scene> sceneCache = new HashMap<>();
 
-    public InterfaceManager(LibraryDB libraryDB) {
-        this.libraryDB = libraryDB;
+    public InterfaceManager(AppMain appMain) {
+        this.appMain = appMain;
     }
 
     public Stage getStage() {
-        return this.libraryDB.getStage();
+        return this.appMain.getStage();
     }
 
     private void displayScene(Scene scene) {
@@ -100,7 +100,7 @@ public class InterfaceManager {
         this.getStage().show();
     }
 
-    public LibraryDB getTardyDB() {
-        return this.libraryDB;
+    public AppMain getTardyDB() {
+        return this.appMain;
     }
 }

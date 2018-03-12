@@ -6,10 +6,9 @@ import org.whstsa.library.gui.factories.DialogBuilder;
 
 public class ExitMetaDialogs {
 
-    public static void exitConfirm(boolean unsaved) {
+    public static void exitConfirm() {
         Dialog dialog = new DialogBuilder()
                 .setTitle("Quit?")
-                .addLabel(unsaved ? "Your data is unsaved.\n Do you still want to exit?" : null)
                 .addButton(ButtonType.YES, true, event -> {
                     System.exit(0);
                 })
