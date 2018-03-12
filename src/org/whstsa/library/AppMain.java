@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * The main class and runner for the entire application
+ * Refactor the name of this class a shortened name of your application. Ex: "LibraryDB"
  * Created by eric on 11/19/17.
  */
 public class AppMain extends Application {

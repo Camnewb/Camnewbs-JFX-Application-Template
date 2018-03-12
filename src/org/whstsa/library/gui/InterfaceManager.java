@@ -9,6 +9,9 @@ import org.whstsa.library.util.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class that provides a simple interface for switching and displaying scenes within the stage
+ */
 public class InterfaceManager {
 
     private static final Logger LOGGER = new Logger(AppMain.LOGGER, "GUIMGR");

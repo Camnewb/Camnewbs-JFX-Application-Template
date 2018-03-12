@@ -11,6 +11,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Class that provides a simple interface with a properties file
+ */
 public class Config {
 
     private Properties properties;
@@ -48,6 +51,9 @@ public class Config {
         AppMain.LOGGER.debug("Property " + property + " was applied to " + key);
     }
 
+    /**
+     * Saves all changes since the last save to the properties file
+     */
     public void save() {
         try {
             this.properties.store(new FileOutputStream(this.configFile), null);
@@ -63,6 +69,10 @@ public class Config {
         }
     }
 
+    /**
+     * Determines the best place for the file; dependant on operating system
+     * @return
+     */
     public static String determineOptimalFileLocation() {
         if (SystemUtils.IS_OS_WINDOWS) {
             return System.getProperty("user.home") + "/AppData/Local/AppMain/config.properties";
