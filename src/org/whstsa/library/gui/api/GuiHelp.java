@@ -12,15 +12,12 @@ import org.whstsa.library.gui.text.HelpText;
 
 public class GuiHelp implements Gui {
 
-    private AppMain appMain;
     private BorderPane window;
     private HelpText helpText;
 
-    public GuiHelp(AppMain appMain) {
-        this.appMain = appMain;
+    GuiHelp(AppMain appMain) {
 
-        Button backButton = GuiUtils.createButton("Back to Main Menu", true,
-                event -> GuiUtils.goBack(appMain));
+        Button backButton = GuiUtils.createButton("Back", true, event -> GuiUtils.goBack(appMain));
         VBox buttonBar = GuiUtils.createVBox(backButton);
         buttonBar.setAlignment(Pos.CENTER);
 

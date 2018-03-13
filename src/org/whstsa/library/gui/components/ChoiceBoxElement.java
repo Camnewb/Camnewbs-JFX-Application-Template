@@ -9,26 +9,21 @@ import org.whstsa.library.gui.factories.GuiUtils;
 import org.whstsa.library.util.ChoiceBoxProperty;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class ChoiceBoxElement<T, U> extends ChoiceBox implements RequiredElement {
 
     private Label label;
     private String id;
-    private ObservableList<T> checkoutList;
     private Map<T, U> items;
-    private boolean map;
     private boolean required;
 
     public ChoiceBoxElement(String id, String label, ObservableList<T> items, boolean useLabel, int selected, boolean disabled) {
         super();
         this.id = id;
         this.label = useLabel ? GuiUtils.createLabel(label, 14) : null;
-        this.map = false;
         this.setItems(items);
         if (selected != -1) {
             super.getSelectionModel().select(selected);
@@ -41,10 +36,9 @@ public class ChoiceBoxElement<T, U> extends ChoiceBox implements RequiredElement
         this.id = id;
         this.label = useLabel ? GuiUtils.createLabel(label) : null;
         this.items = items;
-        this.map = true;
         List<T> setList = new ArrayList<>(items.keySet());
         if (property != null) {
-            setList.forEach(property::property);//Using ChoiceBoxProperty<> like ClickHandler or Callback
+            setList.forEach(property::property);//Used to get a string for displaying in the ChoiceBox
         }
         this.setItems(FXCollections.observableArrayList(setList));
         if (selected != -1) {

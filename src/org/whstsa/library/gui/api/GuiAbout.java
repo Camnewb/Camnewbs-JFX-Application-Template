@@ -11,11 +11,9 @@ import org.whstsa.library.gui.text.AboutText;
 
 public class GuiAbout implements Gui {
 
-    private AppMain appMain;
     private VBox window;
 
-    public GuiAbout(AppMain appMain) {
-        this.appMain = appMain;
+    GuiAbout(AppMain appMain) {
 
         Button backButton = GuiUtils.createButton("Back to Main Menu", true,
                 event -> GuiUtils.goBack(appMain));
@@ -40,6 +38,6 @@ public class GuiAbout implements Gui {
 
     @Override
     public String getUUID() {
-        return "GUI_ABOUT";
+        return "GUI_ABOUT_R";
     }
 }

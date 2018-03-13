@@ -10,19 +10,17 @@ public class MainMenuBar {
 
     private MenuBar mainMenuBar;
 
-    public MainMenuBar() {
-        this(null);
-    }
-
     /**
      * Where the menu bar is initialized. Use the MenuBarElement interface for building the menu bar.
      * @see MenuBarElement
      * @param appMain
      */
-    public MainMenuBar(AppMain appMain) {
+    MainMenuBar(AppMain appMain) {
         Config config = appMain.getConfig();
         MenuBarElement barElement = new MenuBarElement();
         barElement.addMenu("_File");
+        barElement.addMenuItem(0, "_About...", event -> appMain.getInterfaceManager().display(new GuiPreferences(   appMain)), null);
+        barElement.addMenuSeparator(0);
         barElement.addMenuItem(0, "_Exit", event -> ExitMetaDialogs.exitConfirm(), null);
 
         barElement.addMenu("_Help");

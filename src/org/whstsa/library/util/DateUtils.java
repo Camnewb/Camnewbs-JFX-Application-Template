@@ -1,4 +1,4 @@
-package org.whstsa.library.api;
+package org.whstsa.library.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

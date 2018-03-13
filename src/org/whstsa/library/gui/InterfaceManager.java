@@ -89,21 +89,17 @@ public class InterfaceManager {
         return this.currentGui;
     }
 
-    public Scene getCurrentScene() {
+    private Scene getCurrentScene() {
         return this.getStage().getScene();
     }
 
-    public void show() {
-        if (this.currentGui.getUUID().contains("GUI_LIBRARY_MANAGER")) {
+    private void show() {
+        if (this.currentGui.getUUID().indexOf('R') == this.currentGui.getUUID().length() - 1) {
             this.getStage().setResizable(true);
         } else {
             this.getStage().setResizable(false);
         }
         this.getStage().centerOnScreen();
         this.getStage().show();
-    }
-
-    public AppMain getTardyDB() {
-        return this.appMain;
     }
 }

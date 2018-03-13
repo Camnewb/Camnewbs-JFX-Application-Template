@@ -11,7 +11,6 @@ import org.whstsa.library.gui.api.GuiMain;
 import org.whstsa.library.gui.factories.DialogUtils;
 import org.whstsa.library.util.CommandWatcher;
 import org.whstsa.library.util.Logger;
-import org.whstsa.library.util.Readline;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,24 +22,20 @@ import java.io.IOException;
  */
 public class AppMain extends Application {
 
-    public static final Readline READER = new Readline(System.in, System.out);
-    public static final boolean TESTING = false;
+    private static final boolean TESTING = false;
     public static final Logger LOGGER = new Logger();
     private Stage stage;
     private InterfaceManager interfaceManager;
-    private File jsonRawFile;
     private Config config;
-    private String jsonPath;
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void start(Stage stage) {
-        final String javaCWD = new File(".").getPath().replace("file:/", "");
-
         BackgroundWorker.getBackgroundWorker().start();
         new CommandWatcher(System.in, System.out).run();
         this.stage = stage;
-        stage.setTitle("Library Manager 1.0");
+        stage.setTitle("Application");
         try {
-            stage.getIcons().add(new Image(this.getClass().getResource("/").toString()));//Set the direcctory of your icon here
+            stage.getIcons().add(new Image(this.getClass().getResource("").toString()));//Set the direcctory of your icon here
         } catch (NullPointerException ex) {
             Logger.DEFAULT_LOGGER.debug("Not setting stage icon in dev mode.");
         }
@@ -79,16 +74,8 @@ public class AppMain extends Application {
         return this.interfaceManager;
     }
 
-    public File getJsonRawFile() {
-        return this.jsonRawFile;
-    }
-
     public Config getConfig() {
         return this.config;
-    }
-
-    private void setDirectory(String path) {
-        this.jsonPath = path;
     }
 
 }

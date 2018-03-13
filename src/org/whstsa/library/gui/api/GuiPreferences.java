@@ -28,8 +28,7 @@ public class GuiPreferences implements Gui {
         this.prefs = new ArrayList<>();
         this.window = new BorderPane();
 
-        Button backButton = GuiUtils.createButton("Back to Main Menu", true,
-                event -> GuiUtils.goBack(appMain));
+        Button backButton = GuiUtils.createButton("Back", true, event -> GuiUtils.goBack(appMain));
         HBox backButtonBar = GuiUtils.createHBox(backButton);
         backButtonBar.setAlignment(Pos.CENTER_LEFT);
         backButtonBar.setBackground(new Background(new BackgroundFill(Color.web("#f2f2f2"), null, null)));
