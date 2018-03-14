@@ -9,10 +9,18 @@ import org.whstsa.library.gui.factories.GuiUtils;
 import org.whstsa.library.util.ChoiceBoxProperty;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * ChoiceBox class designed for use in dialogs
+ * Along with String lists, the class also supports Maps for
+ * easy matching between String labels and the intended object
+ * @param <T> String
+ * @param <U> Object
+ */
 public class ChoiceBoxElement<T, U> extends ChoiceBox implements RequiredElement {
 
     private Label label;
@@ -75,6 +83,14 @@ public class ChoiceBoxElement<T, U> extends ChoiceBox implements RequiredElement
         return result == null ? null : result.toString();
     }
 
+    /**
+     * Used in conjunction with the map ChoiceBox, returns the value from the map
+     * using the key selected in the ChoiceBox, or the result of <code>getString()</code>.<br><br>
+     *
+     * Example: If the map stores values <code>Name</code> and <code>ID</code>, the ChoiceBox will display <code>Name</code>,
+     * the user will select a name, and <code>getItem()</code> will return <code>ID</code>.
+     * @return Value from selected key
+     */
     public U getItem() {
         return this.items.get(this.getString());
     }

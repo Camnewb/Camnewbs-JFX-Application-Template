@@ -12,6 +12,7 @@ import java.util.Map;
 /**
  * Class that provides a simple interface for switching and displaying scenes within the stage
  */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class InterfaceManager {
 
     private static final Logger LOGGER = new Logger(AppMain.LOGGER, "GUIMGR");
@@ -35,14 +36,14 @@ public class InterfaceManager {
 
     private void displayScene(Scene scene, int tries) {
         if (tries > 5) {
-            Logger.DEFAULT_LOGGER.error("Failed to display scene!");
+            LOGGER.error("Failed to display scene!");
             return;
         }
         try {
             this.oldScene = this.getCurrentScene();
             this.getStage().setScene(scene);
         } catch (IllegalStateException ex) {
-            Logger.DEFAULT_LOGGER.warn("Couldn't set the scene");
+            LOGGER.warn("Couldn't set the scene");
             ex.printStackTrace();
             this.displayScene(scene, tries++);
         }

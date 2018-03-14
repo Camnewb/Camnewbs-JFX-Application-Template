@@ -6,6 +6,9 @@ import org.whstsa.library.gui.factories.GuiUtils;
 
 import java.util.function.Consumer;
 
+/**
+ * CheckBox class for use in dialogs
+ */
 public class CheckBoxElement extends CheckBox implements RequiredElement {
 
     private Node label;

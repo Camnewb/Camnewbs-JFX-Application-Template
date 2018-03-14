@@ -7,6 +7,9 @@ import org.whstsa.library.gui.factories.GuiUtils;
 
 import java.util.function.Consumer;
 
+/**
+ * TextField class for use in dialogs
+ */
 public class TextFieldElement extends TextField implements RequiredElement {
 
     private Label label;

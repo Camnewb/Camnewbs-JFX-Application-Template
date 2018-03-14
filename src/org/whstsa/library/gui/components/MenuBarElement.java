@@ -7,6 +7,10 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.KeyCombination;
 import org.whstsa.library.util.ClickHandlerMenuItem;
 
+/**
+ * MenuBar class that provides a more compact interface for creating menus
+ */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class MenuBarElement extends MenuBar {
 
     public MenuBarElement() {

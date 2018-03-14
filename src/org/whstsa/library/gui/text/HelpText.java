@@ -45,7 +45,7 @@ public class HelpText {
         return new Text(text);
     }
 
-    public LabelElement getTitle(int pageIndex) {
+    private LabelElement getTitle(int pageIndex) {
         return GuiUtils.createTitle(titles.get(pageIndex));
     }
 

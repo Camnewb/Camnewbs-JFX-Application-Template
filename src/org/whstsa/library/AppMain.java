@@ -5,9 +5,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.whstsa.library.api.BackgroundWorker;
-import org.whstsa.library.gui.Config;
 import org.whstsa.library.gui.InterfaceManager;
 import org.whstsa.library.gui.api.GuiMain;
+import org.whstsa.library.gui.dialogs.ExitDialogs;
 import org.whstsa.library.gui.factories.DialogUtils;
 import org.whstsa.library.util.CommandWatcher;
 import org.whstsa.library.util.Logger;
@@ -35,11 +35,22 @@ public class AppMain extends Application {
         this.stage = stage;
         stage.setTitle("Application");
         try {
-            stage.getIcons().add(new Image(this.getClass().getResource("").toString()));//Set the direcctory of your icon here
+            stage.getIcons().add(new Image(this.getClass().getResource("").toString()));//Set the directory of your application icon here
         } catch (NullPointerException ex) {
-            Logger.DEFAULT_LOGGER.debug("Not setting stage icon in dev mode.");
+            LOGGER.debug("Not setting stage icon in dev mode.");
         }
         File configFile = new File(Config.determineOptimalFileLocation());
+        confirmConfigExists(configFile);
+        this.stage.setResizable(true);
+        this.stage.setOnCloseRequest(event -> ExitDialogs.exitConfirm());
+        this.interfaceManager = new InterfaceManager(this);
+        if (TESTING) {
+            //Do whatever you want
+        }
+        this.interfaceManager.display(new GuiMain(this));
+    }
+
+    private void confirmConfigExists(File configFile) {
         if (configFile.exists()) {
             LOGGER.debug("Found config at " + configFile.getAbsolutePath());
             this.config = new Config(configFile);
@@ -58,12 +69,6 @@ public class AppMain extends Application {
                 DialogUtils.createDialog("There was an error", "Couldn't create file.\n" + ex.getMessage(), null, Alert.AlertType.ERROR).showAndWait();
             }
         }
-        this.stage.setResizable(true);
-        this.interfaceManager = new InterfaceManager(this);
-        if (TESTING) {
-            //Do some stuff
-        }
-        this.interfaceManager.display(new GuiMain(this));
     }
 
     public Stage getStage() {

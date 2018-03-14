@@ -26,7 +26,7 @@ public class DialogUtils {
         try {
             alert = new Alert(type);
         } catch (IllegalStateException ex) {
-            Logger.DEFAULT_LOGGER.log("Shutting down TardyDB - We are no longer in a JavaFX Application Thread - Did the user close the program?");
+            LOGGER.log("Shutting down TardyDB - We are no longer in a JavaFX Application Thread - Did the user close the program?");
             System.exit(-1);
             return null;
         }

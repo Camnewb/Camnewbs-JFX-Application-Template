@@ -10,6 +10,9 @@ import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.factories.GuiUtils;
 import org.whstsa.library.gui.text.HelpText;
 
+/**
+ * Gui page for more detailed information and tutorials about the application
+ */
 public class GuiHelp implements Gui {
 
     private BorderPane window;

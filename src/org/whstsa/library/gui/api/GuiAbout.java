@@ -9,6 +9,9 @@ import org.whstsa.library.gui.components.LabelElement;
 import org.whstsa.library.gui.factories.GuiUtils;
 import org.whstsa.library.gui.text.AboutText;
 
+/**
+ * Gui page for information about the app and creator
+ */
 public class GuiAbout implements Gui {
 
     private VBox window;

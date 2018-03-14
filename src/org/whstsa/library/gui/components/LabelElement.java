@@ -5,9 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
+/**
+ * Label class for use in dialogs
+ */
 public class LabelElement extends Label implements Element {
 
-    private String label;
     private String id;
 
     public LabelElement(String id, String label) {

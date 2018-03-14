@@ -27,14 +27,12 @@ public class Readline {
         falseRepresenters.add("false");
     }
 
-    private InputStream inputStream;
     private PrintStream outputStream;
     private Scanner scanner;
 
     public Readline(InputStream inputStream, PrintStream outputStream) {
-        this.inputStream = inputStream;
         this.outputStream = outputStream;
-        this.scanner = new Scanner(this.inputStream);
+        this.scanner = new Scanner(inputStream);
     }
 
     private static boolean isMatch(String search, List<String> stringList) {

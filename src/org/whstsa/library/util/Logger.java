@@ -1,9 +1,8 @@
 package org.whstsa.library.util;
 
+@SuppressWarnings({"unused", "WeakerAccess", "FieldCanBeLocal"})
 public class Logger {
 
-    @Deprecated
-    public static final Logger DEFAULT_LOGGER = new Logger();
     private static final int TAG_SPACING = 10;
     private static final String[] LOG_COLORS = {
             Constants.ANSI_BLUE
@@ -19,8 +18,8 @@ public class Logger {
             Constants.ANSI_ITALICS,
             Constants.ANSI_BLUE
     };
-    public static boolean DEBUG = true;
-    public final Object[] tags;
+    private static boolean DEBUG = true;
+    private final Object[] tags;
 
     public Logger(String... tags) {
         this.tags = tags;
@@ -57,9 +56,9 @@ public class Logger {
             tag = tag.substring(0, Logger.TAG_SPACING - 2);
         }
         int spacesNeeded = (Logger.TAG_SPACING - 2) - tag.length();
-        String assembledTag = "[";
+        StringBuilder assembledTag = new StringBuilder("[");
         for (int i = 0; i <= spacesNeeded; i++) {
-            assembledTag += " ";
+            assembledTag.append(" ");
         }
         return assembledTag + tag + "] ";
     }

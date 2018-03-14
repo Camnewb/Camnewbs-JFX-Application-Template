@@ -4,10 +4,13 @@ import javafx.scene.Node;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import org.whstsa.library.gui.factories.GuiUtils;
 
 import java.util.List;
 
+/**
+ * TextFlow class which provides and easier way to create TextFlows<br>
+ * Use the <code>createTextFlow()</code> method in GuiUtils to create TextFlows
+ */
 public class TextFlowElement extends TextFlow implements Element {
 
     private String id;

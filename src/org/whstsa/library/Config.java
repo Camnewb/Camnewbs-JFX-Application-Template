@@ -1,8 +1,7 @@
-package org.whstsa.library.gui;
+package org.whstsa.library;
 
 import javafx.scene.control.Alert;
 import org.apache.commons.lang3.SystemUtils;
-import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.factories.DialogUtils;
 
 import java.io.File;
@@ -20,7 +19,7 @@ public class Config {
     private File configFile;
     private boolean notified;
 
-    public Config(File configFile) {
+    Config(File configFile) {
         this.properties = new Properties();
         this.configFile = configFile;
         this.notified = false;
@@ -71,7 +70,7 @@ public class Config {
 
     /**
      * Determines the best place for the file; dependant on operating system
-     * @return
+     * @return Optimum file path
      */
     public static String determineOptimalFileLocation() {
         if (SystemUtils.IS_OS_WINDOWS) {

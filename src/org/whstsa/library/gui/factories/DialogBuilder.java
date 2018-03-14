@@ -22,6 +22,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+
 public class DialogBuilder {
 
     private List<Element> elementList;
@@ -227,6 +228,10 @@ public class DialogBuilder {
         return this.elementList;
     }
 
+    /**
+     * Builds the dialog
+     * @return the built dialog
+     */
     public Dialog<Map<String, Element>> build() {
         SimpleBooleanProperty isCancelled = new SimpleBooleanProperty(false);
         Dialog<Map<String, Element>> dialog = new Dialog<>();

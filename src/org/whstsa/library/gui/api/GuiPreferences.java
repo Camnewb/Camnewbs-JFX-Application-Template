@@ -7,7 +7,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.whstsa.library.AppMain;
-import org.whstsa.library.gui.Config;
+import org.whstsa.library.Config;
 import org.whstsa.library.gui.components.LabelElement;
 import org.whstsa.library.gui.components.PreferenceFieldElement;
 import org.whstsa.library.gui.factories.GuiUtils;
@@ -16,6 +16,9 @@ import org.whstsa.library.util.FieldProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gui page for settings and preferences
+ */
 public class GuiPreferences implements Gui {
 
     private AppMain appMain;

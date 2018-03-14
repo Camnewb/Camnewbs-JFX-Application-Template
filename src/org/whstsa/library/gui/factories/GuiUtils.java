@@ -25,6 +25,7 @@ import java.util.Map;
 /**
  * Class which contains the methods to easily create most common JavaFX elements
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class GuiUtils {
 
     private static final int COMPONENT_PADDING = 16;
@@ -231,6 +232,10 @@ public class GuiUtils {
         return new ChoiceBoxElement<>(label, label, items, useLabel, selected, disabled);
     }
 
+    public static <T> ChoiceBoxElement createChoiceBox(ObservableList<T> items, int selected, boolean disabled) {
+        return new ChoiceBoxElement<>("blank", "", items, false, selected, disabled);
+    }
+
     public static <K, V> ChoiceBoxElement createChoiceBox(String label, Map<K, V> items, ChoiceBoxProperty<String> property, boolean useLabel, int selected) {
         return new ChoiceBoxElement(label, label, items, property, useLabel, selected);
     }
@@ -306,5 +311,4 @@ public class GuiUtils {
         public final String name = this.name().toLowerCase();
     }
 
-    ;
 }

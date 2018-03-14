@@ -6,24 +6,31 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import org.whstsa.library.gui.factories.GuiUtils;
 
+
+/**
+ * Spinner class for use in dialogs<br>
+ * Spinners are integer/double fields which can be incremented or decremented
+ * using buttons to the right of the field. They prevent many headaches with input sanitation
+ */
 public class SpinnerElement extends Spinner implements Element {//Only ints for now
 
     private String id;
     private LabelElement label;
 
-    public SpinnerElement(String id, String label, boolean useLabel, int start, int end, int selectedIndex) {
+    public SpinnerElement(String id, String label, boolean useLabel, int step, int start, int end, int selectedIndex) {
         super();
         this.id = id;
         if (useLabel) {
             this.label = GuiUtils.createLabel(label, 14);
         }
+        this.setRotate(step);
         this.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(start, end, selectedIndex));
         this.setEditable(true);
         this.getEditor().textProperty().addListener((ov, oldValue, newValue) -> {
             if (newValue == null || newValue.isEmpty()) {
                 return;
             }
-            try {
+            try {//Checks if user inputted a value that is not an integer
                 Integer.parseInt(newValue);
             } catch (NumberFormatException e) {
                 Platform.runLater(() -> this.getEditor().setText(oldValue));
@@ -35,6 +42,10 @@ public class SpinnerElement extends Spinner implements Element {//Only ints for 
             }
         }));
 
+    }
+
+    public SpinnerElement(String id, String label, boolean useLabel, int start, int end, int selectedIndex) {
+        this(id, label, useLabel, 1, start, end, selectedIndex);
     }
 
     @Override
