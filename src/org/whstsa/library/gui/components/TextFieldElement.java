@@ -16,6 +16,13 @@ public class TextFieldElement extends TextField implements RequiredElement {
     private String id;
     private boolean required = false;
 
+    /**
+     * Creates a label
+     * @param id Unique identifier
+     * @param label Prompt which may appear to the left of the element in a dialog
+     * @param inline Whether the label (or prompt) should appear to the left of the element
+     *               or inside the Text Field in a dialog
+     */
     public TextFieldElement(String id, String label, boolean inline) {
         super();
         if (inline) {

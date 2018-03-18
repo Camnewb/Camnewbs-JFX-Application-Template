@@ -5,6 +5,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +19,13 @@ public class TextFlowElement extends TextFlow implements Element {
     private String css;
     private List<String> fields;
 
+    /**
+     * Creates a Text Flow
+     * @param id Unique identifier
+     * @param size Font size
+     * @param css Any css declarations for the text
+     * @param fields Text fields
+     */
     public TextFlowElement(String id, double size, String css, List<String> fields) {
         super();
         this.id = id;
@@ -28,6 +36,13 @@ public class TextFlowElement extends TextFlow implements Element {
         this.fields.forEach(field -> super.getChildren().add(new Text(field)));
         super.setStyle(this.css);
         super.getChildren().forEach(node -> ((Text) node).setFont(Font.font(size)));
+    }
+
+    /**
+     * Create a text flow with multiple field args
+     */
+    public TextFlowElement(String id, double size, String css, String ...fields) {
+        this(id, size, css, Arrays.asList(fields));
     }
 
     @Override

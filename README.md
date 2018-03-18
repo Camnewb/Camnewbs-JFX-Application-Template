@@ -16,9 +16,6 @@ Directory that contains the code to support the command interface
 ####GUI
 Has the code supporting the graphical interface, including the Interface
 Manager, Dialog Builder, and Components
-####UTIL
-Classes which contain methods and interfaces to be used mainly by the Logger
-and clickable components.
 ####AppMain Class
 Contains the main method for launching the Background Worker, Command-line and
 Logger, and the Gui
