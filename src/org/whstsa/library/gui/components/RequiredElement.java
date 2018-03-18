@@ -16,13 +16,13 @@ public interface RequiredElement extends Element {
 
     /**
      * If a field has been filled by the user
-     * @return
+     * @return Whether the field has been satisfied
      */
     boolean isSatisfied();
 
     /**
      * Action to be performed upon field satisfaction
-     * @param onSatisfactionUpdate
+     * @param onSatisfactionUpdate Action
      */
     void setOnSatisfactionUpdate(Consumer<Boolean> onSatisfactionUpdate);
 }

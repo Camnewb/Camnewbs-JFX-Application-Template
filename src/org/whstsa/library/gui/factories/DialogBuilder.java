@@ -22,7 +22,26 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Much simpler interface for building dialogs and managing their inputs and actions<br/>
+ * <br/>
+ * Format for building a dialog:<br/>
+ * <code>String FIRST_NAME_FIELD = "First Name";<br/>
+ * String LAST_NAME_FIELD = "Last Name";<br/>
+ <br/>
+ .setTitle("Title")<br/>
+ .setIsCancellable(true)<br/>
+ .addTextField(FIRST_NAME_FIELD, "", true, true)<br/>
+ .addTextField(LAST_NAME_FIELD, "", true, true)<br/>
+ .build();<br/>
+ DialogUtils.getDialogResults(dialog, (results) -> {<br/>
+    String firstName = results.get(FIRST_NAME_FIELD);<br/>
+    String lastName = results.get(LAST_NAME_FIELD);<br/>
+ });<br/>
 
+ }</code>
+ */
+@SuppressWarnings({"unused", "WeakerAccess", "UnusedReturnValue"})
 public class DialogBuilder {
 
     private List<Element> elementList;
@@ -274,20 +293,16 @@ public class DialogBuilder {
         this.closingButtons.stream().filter(button -> !this.buttonActionMap.containsKey(button)).forEach(button -> {
             Node buttonNode = dialog.getDialogPane().lookupButton(button);
             if (buttonNode != null) {
-                buttonNode.addEventFilter(ActionEvent.ACTION, event -> {
-                    buttonNode.getScene().getWindow().hide();
-                });
+                buttonNode.addEventFilter(ActionEvent.ACTION, event -> buttonNode.getScene().getWindow().hide());
             }
         });
 
-        Consumer<Boolean> updateButtonState = disabled -> {
-            this.getRawButtonList().forEach(button -> {
-                Node buttonNode = dialog.getDialogPane().lookupButton(button);
-                if (buttonNode != null) {
-                    buttonNode.setDisable(disabled);
-                }
-            });
-        };
+        Consumer<Boolean> updateButtonState = disabled -> this.getRawButtonList().forEach(button -> {
+            Node buttonNode = dialog.getDialogPane().lookupButton(button);
+            if (buttonNode != null) {
+                buttonNode.setDisable(disabled);
+            }
+        });
 
         BooleanProperty isSubmittable = new SimpleBooleanProperty(true);
 
@@ -301,9 +316,7 @@ public class DialogBuilder {
             updateButtonState.accept(!isSubmittable.get());
         };
 
-        this.getRequiredElements().forEach(requiredElement -> {
-            requiredElement.setOnSatisfactionUpdate(satisfied -> indexElements.run());
-        });
+        this.getRequiredElements().forEach(requiredElement -> requiredElement.setOnSatisfactionUpdate(satisfied -> indexElements.run()));
 
         indexElements.run();
 

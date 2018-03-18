@@ -29,7 +29,7 @@ public class TextFieldElement extends TextField implements RequiredElement {
 
     public TextFieldElement(String id, String label, boolean inline, boolean required) {
         this(id, label, inline);
-        this.required = true;
+        this.required = required;
     }
 
     public Node getComputedElement() {

@@ -13,9 +13,16 @@ import org.whstsa.library.gui.components.Element;
 import org.whstsa.library.util.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Holds utility static methods for building dialogs<br/>
+ * Used in conjunction with DialogBuilder
+ * @see DialogBuilder
+ */
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class DialogUtils {
 
     private static final int ELEMENT_PADDING = 10;
@@ -38,16 +45,11 @@ public class DialogUtils {
             cancelNode.addEventFilter(ActionEvent.ACTION, event -> alert.getDialogPane().getScene().getWindow().hide());
         }
         if (onClose != null) {
-            alert.setOnCloseRequest(new EventHandler<DialogEvent>() {
-                @Override
-                public void handle(DialogEvent arg0) {
-                    onClose.callback((Boolean arg1) -> {
-                        if (arg1) {
-                            alert.getDialogPane().getScene().getWindow().hide();
-                        }
-                    });
+            alert.setOnCloseRequest(arg0 -> onClose.callback((Boolean arg1) -> {
+                if (arg1) {
+                    alert.getDialogPane().getScene().getWindow().hide();
                 }
-            });
+            }));
         }
         return alert;
     }
@@ -101,9 +103,7 @@ public class DialogUtils {
             dialog.getDialogPane().getChildren().forEach(node -> {
                 if (node instanceof GridPane) {
                     GridPane grid = (GridPane) node;
-                    grid.getChildren().forEach((child) -> {
-                        addNode(valueMap, child);
-                    });
+                    grid.getChildren().forEach((child) -> addNode(valueMap, child));
                 }
             });
             return valueMap;
@@ -118,10 +118,7 @@ public class DialogUtils {
     }
 
     public static ButtonType[] createButtonList(boolean cancelButton, ButtonType... buttons) {
-        ArrayList<ButtonType> buttonList = new ArrayList<>();
-        for (ButtonType button : buttons) {
-            buttonList.add(button);
-        }
+        ArrayList<ButtonType> buttonList = new ArrayList<>(Arrays.asList(buttons));
         if (cancelButton) {
             buttonList.add(ButtonType.CANCEL);
         }

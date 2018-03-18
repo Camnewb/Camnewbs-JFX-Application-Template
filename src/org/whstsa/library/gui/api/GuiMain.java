@@ -2,13 +2,19 @@ package org.whstsa.library.gui.api;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.whstsa.library.AppMain;
 import org.whstsa.library.gui.components.LabelElement;
 import org.whstsa.library.gui.components.Table;
+import org.whstsa.library.gui.factories.DialogBuilder;
+import org.whstsa.library.gui.factories.DialogUtils;
 import org.whstsa.library.gui.factories.GuiUtils;
 
+/**
+ * Main Gui page
+ */
 public class GuiMain implements Gui {
 
     private AppMain appMain;

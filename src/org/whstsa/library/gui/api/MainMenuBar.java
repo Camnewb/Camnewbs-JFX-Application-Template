@@ -24,9 +24,12 @@ public class MainMenuBar {
         barElement.addMenuSeparator(0);
         barElement.addMenuItem(0, "_Exit", event -> ExitDialogs.exitConfirm(), null);
 
+        barElement.addMenu("_Edit");
+        barElement.addMenuItem(1, "Example Dialog...", event -> ExampleDialogs.nameField(), null);
+
         barElement.addMenu("_Help");
-        barElement.addMenuItem(1, "_About...", event -> appMain.getInterfaceManager().display(new GuiAbout(appMain)), null);
-        barElement.addMenuItem(1, "_Help...", event -> appMain.getInterfaceManager().display(new GuiHelp(appMain)), null);
+        barElement.addMenuItem(2, "_About...", event -> appMain.getInterfaceManager().display(new GuiAbout(appMain)), null);
+        barElement.addMenuItem(2, "_Help...", event -> appMain.getInterfaceManager().display(new GuiHelp(appMain)), null);
 
         this.mainMenuBar = barElement;
     }

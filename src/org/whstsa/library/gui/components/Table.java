@@ -29,6 +29,9 @@ public class Table<T> {
         view = new TableView<>();
     }
 
+    /**
+     * @return The TableView of this Table
+     */
     public TableView<T> getTable() {
         return this.view;
     }

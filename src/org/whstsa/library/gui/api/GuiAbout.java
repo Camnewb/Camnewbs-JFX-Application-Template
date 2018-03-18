@@ -18,8 +18,7 @@ public class GuiAbout implements Gui {
 
     GuiAbout(AppMain appMain) {
 
-        Button backButton = GuiUtils.createButton("Back to Main Menu", true,
-                event -> GuiUtils.goBack(appMain));
+        Button backButton = GuiUtils.createButton("Back to Main Menu", true, event -> GuiUtils.goBack(appMain));
 
         LabelElement title = GuiUtils.createTitle("About");
 
