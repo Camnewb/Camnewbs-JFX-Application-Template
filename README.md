@@ -1,2 +1,1 @@
-# Library
-Main library repo
+# README
